@@ -13,5 +13,6 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="description">Image Description</string>
+    <string name="title">Image Title</string>
     <string name="share">Share</string>
 </resources>

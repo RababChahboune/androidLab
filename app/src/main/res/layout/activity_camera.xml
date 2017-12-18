@@ -4,39 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:layout_editor_absoluteX="8dp"
-    tools:layout_editor_absoluteY="8dp"
     tools:context="com.example.learning.androidlabwork.CameraActivity"
-    >
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp">
+
         <ImageView
             android:id="@+id/newImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.54"
+            android:layout_height="245dp"
+            android:layout_margin="0dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@mipmap/ic_launcher"
-            />
+            app:srcCompat="@mipmap/ic_launcher" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/newTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/description" />
+            android:layout_margin="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
 
         <EditText
             android:id="@+id/newDescritpion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.41"
+            android:layout_margin="10dp"
+            android:layout_weight="0.94"
             android:ems="10"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:padding="10dp" />
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:id="@+id/share_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/share" />
 
