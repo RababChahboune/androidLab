@@ -1,11 +1,13 @@
 package com.example.learning.androidlabwork;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView postList;
     DatabaseReference myRef;
     static Context context;
+    Button addPost;
 
 
 
@@ -33,10 +36,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         postList = (RecyclerView) findViewById(R.id.post_list);
+        addPost = (Button) findViewById(R.id.addPost);
         postList.setHasFixedSize(true);
         postList.setLayoutManager(new LinearLayoutManager(this));
         myRef = FirebaseDatabase.getInstance().getReference("posts");
         context = this;
+
+        addPost.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,CameraActivity.class));
+            }
+        });
 
     }
 
@@ -88,5 +98,13 @@ public class MainActivity extends AppCompatActivity {
         };
         postList.setAdapter(firebaseRecyclerAdapter);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

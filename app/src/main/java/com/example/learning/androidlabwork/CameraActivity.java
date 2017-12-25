@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -105,7 +106,7 @@ public class CameraActivity extends AppCompatActivity {
                     //the coordinate are not working I will pass them now and try it later
                     ref.push().setValue(
                             new Post(
-                                    imageUUID,newDescription.getText().toString(),newTitle.getText().toString(),
+                                    imageUUID,newTitle.getText().toString(),newDescription.getText().toString(),
                                     0.0,0.0));
                     startActivity(new Intent(CameraActivity.this,MainActivity.class));
                 }
@@ -123,26 +124,16 @@ public class CameraActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             imageBitmap = (Bitmap) extras.get("data");
             newImage.setImageBitmap(imageBitmap);
-            /*Glide.with(CameraActivity.this)
-                    .using(new FirebaseImageLoader())
-                    .load(mStorageRef)
-                    .into(newImage);*/
+        }else{
+            startActivity(new Intent(CameraActivity.this,MainActivity.class));
         }
     }
 
-    public Location getLocation(LocationManager lm){
-            Location location = null;
-            try{
-                location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            }catch (SecurityException e){
-                System.out.println(e);
-            }
-            return location;
-    }
     @Override
     public void onBackPressed(){
         // do something here and don't write super.onBackPressed()

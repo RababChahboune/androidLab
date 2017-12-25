@@ -8,39 +8,52 @@
     android:weightSum="1"
     tools:context="com.example.learning.androidlabwork.CameraActivity"
     tools:layout_editor_absoluteX="8dp"
-    tools:layout_editor_absoluteY="8dp">
+    tools:layout_editor_absoluteY="8dp"
+    android:background="@android:color/white"
+    >
 
-        <ImageView
-            android:id="@+id/newImage"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="245dp"
-            android:layout_margin="0dp"
-            android:scaleType="centerCrop"
-            app:srcCompat="@mipmap/ic_launcher" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/newTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:padding="10dp" />
+                <ImageView
+                    android:id="@+id/newImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="245dp"
+                    android:layout_margin="0dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/login" />
 
-        <EditText
-            android:id="@+id/newDescritpion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="0.94"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:padding="10dp" />
+                <EditText
+                    android:id="@+id/newTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:ems="10"
+                    android:hint="Give a title"
+                    android:inputType="textPersonName"
+                    android:padding="10dp" />
+
+                <EditText
+                    android:id="@+id/newDescritpion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:ems="10"
+                    android:hint="Give us ideas!"
+                    android:padding="10dp" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/share_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/share" />
+            android:text="@string/share"
+            android:background="@color/bg_screen1"
+            android:textColor="@android:color/white"
+            />
 
 </LinearLayout>
