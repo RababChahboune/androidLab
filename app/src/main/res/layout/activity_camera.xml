@@ -21,31 +21,33 @@
                 <ImageView
                     android:id="@+id/newImage"
                     android:layout_width="match_parent"
-                    android:layout_height="245dp"
+                    android:layout_height="match_parent"
                     android:layout_margin="0dp"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/login" />
 
-                <EditText
-                    android:id="@+id/newTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:ems="10"
-                    android:hint="Give a title"
-                    android:inputType="textPersonName"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/newDescritpion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:ems="10"
-                    android:hint="Give us ideas!"
-                    android:padding="10dp" />
-
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/newTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Give a title"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/newDescritpion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Give us ideas!"
+            android:padding="10dp" />
 
         <Button
             android:id="@+id/share_button"

@@ -3,6 +3,7 @@ package com.example.learning.androidlabwork;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -64,13 +65,14 @@ public class CameraActivity extends AppCompatActivity {
         newDescription = (EditText) findViewById(R.id.newDescritpion);
         newTitle = (EditText) findViewById(R.id.newTitle);
         share = (Button) findViewById(R.id.share_button);
-        //mStorageRef = FirebaseStorage.getInstance().getReference().child("9466ffcc-e1b4-4abd-b92d-189f0ed8914a");
-
-        //init location to get coordinates of user
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-        dispatchTakePictureIntent();
-
+        if (savedInstanceState != null) {
+            newTitle.setText(savedInstanceState.get("title").toString());
+            newDescription.setText(savedInstanceState.get("description").toString());
+            imageBitmap = BitmapFactory.decodeByteArray(savedInstanceState.getByteArray("image"), 0, savedInstanceState.getByteArray("image").length);
+            newImage.setImageBitmap(imageBitmap);
+        }else{
+            dispatchTakePictureIntent();
+        }
         share.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 uploadImage(imageBitmap,myRef);
@@ -138,5 +140,23 @@ public class CameraActivity extends AppCompatActivity {
     public void onBackPressed(){
         // do something here and don't write super.onBackPressed()
         startActivity(new Intent(CameraActivity.this,MainActivity.class));
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        if(imageBitmap!=null){
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+            savedInstanceState.putByteArray("image",byteArray);
+            savedInstanceState.putString("title",newTitle.getText().toString() );
+            savedInstanceState.putString("description",newDescription.getText().toString() );
+        }
+
+
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
     }
 }
